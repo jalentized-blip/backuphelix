@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { Activity, ShieldCheck, Cpu, Zap, Beaker, Search, Database, Fingerprint } from 'lucide-react';
 import { LabIcons } from '@/components/LabArt';
 
@@ -38,8 +39,6 @@ export default function MedicalCore() {
       {/* Background Tech Elements - Light Mode */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(158,27,27,0.02),transparent)]" />
-        {/* Subtle grid for a technical look on white */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
 
       <div className="container relative z-10 mx-auto">
@@ -81,16 +80,36 @@ export default function MedicalCore() {
                 ))}
               </div>
 
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.03, 1],
-                  filter: ['brightness(1)', 'brightness(1.05)', 'brightness(1)']
-                }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="text-primary z-10 w-40 h-40"
-              >
-                <LabIcons.Vial />
-              </motion.div>
+              <Link href="/coa" className="relative z-10 block group">
+                <motion.div 
+                  whileHover={{ 
+                    scale: 1.8,
+                    rotate: [0, -10, 10, -10, 10, 0],
+                    x: [0, -5, 5, -5, 5, 0],
+                    y: [0, 5, -5, 5, -5, 0],
+                    filter: ['brightness(1) contrast(1)', 'brightness(1.5) contrast(1.2)', 'brightness(1) contrast(1)']
+                  }}
+                  transition={{ 
+                    rotate: { duration: 0.1, repeat: Infinity },
+                    x: { duration: 0.1, repeat: Infinity },
+                    y: { duration: 0.1, repeat: Infinity },
+                    scale: { type: "spring", stiffness: 300, damping: 10 },
+                    filter: { duration: 0.5, repeat: Infinity }
+                  }}
+                  className="text-primary w-40 h-40 cursor-pointer"
+                >
+                  <LabIcons.Vial />
+                </motion.div>
+                
+                {/* Click Hint */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileHover={{ opacity: 1, y: 0 }}
+                  className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full whitespace-nowrap tracking-widest shadow-xl pointer-events-none"
+                >
+                  VIEW COA DATA
+                </motion.div>
+              </Link>
               
               {/* Internal HUD Markers */}
               <div className="absolute inset-0 pointer-events-none">
