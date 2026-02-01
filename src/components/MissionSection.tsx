@@ -7,9 +7,9 @@ import { ShieldCheck, Star, Truck, Beaker, Globe, Zap } from 'lucide-react';
 
 export default function MissionSection() {
   const features = [
-    { icon: Star, text: "Premium Quality", color: "bg-[#0A3D62]" },
-    { icon: Zap, text: "99% PURE & TESTED", color: "bg-[#D48806]" },
-    { icon: Truck, text: "Ships in 3-5 days", color: "bg-[#0A3D62]" },
+    { icon: Star, text: "Premium Quality", color: "bg-primary" },
+    { icon: Zap, text: "99% PURE & TESTED", color: "bg-primary" },
+    { icon: Truck, text: "Ships in 3-5 days", color: "bg-primary" },
   ];
 
   const callouts = [
