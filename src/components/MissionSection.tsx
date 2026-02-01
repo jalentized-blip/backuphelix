@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ShieldCheck, Star, Truck, Beaker, Globe, Zap, Save, RotateCcw, Maximize, Minimize } from 'lucide-react';
+import { ShieldCheck, Beaker, Globe, Save, RotateCcw, Maximize, Minimize } from 'lucide-react';
 import { useAdmin } from '@/context/AdminContext';
 import { updateMissionPositions } from '@/app/actions/updateMissionPositions';
 
@@ -49,12 +49,6 @@ export default function MissionSection() {
       };
     }
   }, [isRotating]);
-
-  const features = [
-    { icon: Star, text: "Premium Quality", color: "bg-primary" },
-    { icon: Zap, text: "99% PURE & TESTED", color: "bg-primary" },
-    { icon: Truck, text: "Ships in 3-5 days", color: "bg-primary" },
-  ];
 
   const callouts = [
     {
@@ -119,22 +113,6 @@ export default function MissionSection() {
 
       <div className="container mx-auto px-6">
         
-        {/* Top Feature Bars */}
-        <div className="flex flex-wrap justify-center gap-4 mb-20">
-          {features.map((feature, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className={`${feature.color} text-white px-8 py-3 rounded-lg flex items-center gap-3 shadow-lg min-w-[240px] justify-center`}
-            >
-              <feature.icon size={18} />
-              <span className="text-sm font-black tracking-widest uppercase">{feature.text}</span>
-            </motion.div>
-          ))}
-        </div>
-
         {/* Mission Text */}
         <div className="max-w-4xl mx-auto text-center space-y-8 mb-32">
           <motion.h2 
