@@ -214,13 +214,14 @@ export default function Home() {
         <div className="container relative">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Large Vial Image on the Left */}
-            <div className="relative w-full lg:w-1/2 h-[400px] md:h-[600px] flex items-center justify-center lg:justify-start">
-              <div className="relative w-[150%] h-full lg:-left-[25%]">
+            <div className="relative w-full lg:w-1/2 h-[500px] md:h-[700px] flex items-center justify-center lg:justify-start">
+              <div className="relative w-[200%] h-[120%] lg:-left-[60%] lg:-bottom-[10%] -rotate-[35deg] transform-gpu">
                 <Image 
                   src="/vial.png"
                   alt="Helivex Labs Research Vial"
                   fill
-                  className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.1)]"
+                  className="object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.15)]"
+                  priority
                 />
               </div>
             </div>
