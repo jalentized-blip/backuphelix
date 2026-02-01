@@ -34,7 +34,7 @@ export default function MissionSection() {
       title: "Research Use Only",
       description: "Labeled for research and laboratory use only.",
       position: "bottom-[10%] left-[-45%]",
-      dotPosition: "top-[50%] right-[-10px]"
+      dotPosition: "top-[50%] left-[-10px]"
     },
     {
       title: "In the U.S.A.",
