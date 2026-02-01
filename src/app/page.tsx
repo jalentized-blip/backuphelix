@@ -8,7 +8,7 @@ import ScrollingBanner from '@/components/ScrollingBanner';
 import EditableText from '@/components/EditableText';
 import { useAdmin } from '@/context/AdminContext';
 import { LabIcons, MoleculePattern } from '@/components/LabArt';
-import AssemblyLine from '@/components/AssemblyLine';
+import MedicalCore from '@/components/MedicalCore';
 
 export default function Home() {
   const { isEditMode } = useAdmin();
@@ -196,9 +196,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Peptide Synthesis Assembly Line */}
+      {/* Molecular Analysis Core */}
       <section className="mt-20">
-        <AssemblyLine />
+        <MedicalCore />
       </section>
     </div>
   );
