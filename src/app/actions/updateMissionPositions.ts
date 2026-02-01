@@ -3,7 +3,10 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-export async function updateMissionPositions(positions: { x: number, y: number }[]) {
+export async function updateMissionPositions(
+  positions: { x: number, y: number }[],
+  vialData?: { x: number, y: number, rotate: number, scale: number }
+) {
   try {
     const filePath = path.join(process.cwd(), 'src/components/MissionSection.tsx');
     let content = await fs.readFile(filePath, 'utf-8');
@@ -17,6 +20,18 @@ export async function updateMissionPositions(positions: { x: number, y: number }
       
       if (regex.test(content)) {
         content = content.replace(regex, newPosition);
+      }
+    }
+
+    // Update vial data if provided
+    if (vialData) {
+      const markerStart = `/* VIAL_START */`;
+      const markerEnd = `/* VIAL_END */`;
+      const regex = new RegExp(`${escapeRegExp(markerStart)}([\\s\\S]*?)${escapeRegExp(markerEnd)}`);
+      const newVialData = `${markerStart} { x: ${Math.round(vialData.x)}, y: ${Math.round(vialData.y)}, rotate: ${Math.round(vialData.rotate)}, scale: ${Number(vialData.scale.toFixed(2))} } ${markerEnd}`;
+      
+      if (regex.test(content)) {
+        content = content.replace(regex, newVialData);
       }
     }
 

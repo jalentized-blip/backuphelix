@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ShieldCheck, Star, Truck, Beaker, Globe, Zap, Save } from 'lucide-react';
+import { ShieldCheck, Star, Truck, Beaker, Globe, Zap, Save, RotateCcw, Maximize, Minimize } from 'lucide-react';
 import { useAdmin } from '@/context/AdminContext';
 import { updateMissionPositions } from '@/app/actions/updateMissionPositions';
 
@@ -11,10 +11,12 @@ import { updateMissionPositions } from '@/app/actions/updateMissionPositions';
 const CARD_1_POS = /* CARD_1_START */ { x: 0, y: 0 } /* CARD_1_END */;
 const CARD_2_POS = /* CARD_2_START */ { x: 0, y: 0 } /* CARD_2_END */;
 const CARD_3_POS = /* CARD_3_START */ { x: 0, y: 0 } /* CARD_3_END */;
+const VIAL_DATA = /* VIAL_START */ { x: 0, y: 0, rotate: -25, scale: 1 } /* VIAL_END */;
 
 export default function MissionSection() {
   const { isEditMode } = useAdmin();
   const [positions, setPositions] = useState([CARD_1_POS, CARD_2_POS, CARD_3_POS]);
+  const [vialData, setVialData] = useState(VIAL_DATA);
   const [isSaving, setIsSaving] = useState(false);
 
   const features = [
@@ -47,11 +49,11 @@ export default function MissionSection() {
   const handleSave = async () => {
     setIsSaving(true);
     try {
-      await updateMissionPositions(positions);
-      alert('Positions saved successfully!');
+      await updateMissionPositions(positions, vialData);
+      alert('Positions and transformations saved successfully!');
     } catch (error) {
       console.error(error);
-      alert('Failed to save positions.');
+      alert('Failed to save changes.');
     } finally {
       setIsSaving(false);
     }
@@ -136,10 +138,25 @@ export default function MissionSection() {
 
           {/* Central Vial */}
           <motion.div
-            initial={{ rotate: -15, scale: 0.8, opacity: 0 }}
-            whileInView={{ rotate: -25, scale: 1, opacity: 1 }}
+            drag={isEditMode}
+            dragMomentum={false}
+            onDragEnd={(_, info) => {
+              setVialData(prev => ({
+                ...prev,
+                x: prev.x + info.offset.x,
+                y: prev.y + info.offset.y
+              }));
+            }}
+            initial={false}
+            animate={{ 
+              rotate: vialData.rotate, 
+              scale: vialData.scale,
+              x: vialData.x,
+              y: vialData.y,
+              opacity: 1 
+            }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="relative z-10 w-64 h-80"
+            className={`relative z-10 w-64 h-80 ${isEditMode ? 'cursor-move ring-2 ring-primary ring-offset-4 rounded-3xl' : ''}`}
           >
             <Image 
               src="/vial.png"
@@ -147,6 +164,34 @@ export default function MissionSection() {
               fill
               className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
             />
+            
+            {/* Vial Edit Controls Overlay */}
+            {isEditMode && (
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-white p-2 rounded-xl shadow-xl border border-primary/20 z-50">
+                <button 
+                  onClick={() => setVialData(prev => ({ ...prev, rotate: prev.rotate + 90 }))}
+                  className="p-1.5 hover:bg-primary/10 rounded-lg text-primary transition-colors"
+                  title="Rotate 90°"
+                >
+                  <RotateCcw size={16} />
+                </button>
+                <div className="w-[1px] h-4 bg-zinc-200 mx-1" />
+                <button 
+                  onClick={() => setVialData(prev => ({ ...prev, scale: Math.min(prev.scale + 0.1, 2) }))}
+                  className="p-1.5 hover:bg-primary/10 rounded-lg text-primary transition-colors"
+                  title="Increase Size"
+                >
+                  <Maximize size={16} />
+                </button>
+                <button 
+                  onClick={() => setVialData(prev => ({ ...prev, scale: Math.max(prev.scale - 0.1, 0.5) }))}
+                  className="p-1.5 hover:bg-primary/10 rounded-lg text-primary transition-colors"
+                  title="Decrease Size"
+                >
+                  <Minimize size={16} />
+                </button>
+              </div>
+            )}
           </motion.div>
 
           {/* Callout Cards */}
