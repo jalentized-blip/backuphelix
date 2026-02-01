@@ -1,28 +1,44 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, Beaker, ChevronDown } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, Beaker, ChevronDown, Camera } from 'lucide-react';
 import { products } from '@/data/products';
 import ScrollingBanner from '@/components/ScrollingBanner';
+import EditableText from '@/components/EditableText';
+import { useAdmin } from '@/context/AdminContext';
 
 export default function Home() {
+  const { isEditMode } = useAdmin();
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center overflow-hidden bg-foreground">
         <div className="absolute inset-0 z-0 opacity-40">
           <div className="absolute inset-0 bg-gradient-to-r from-primary to-transparent" />
-          {/* Add a background image here later if available */}
+          {isEditMode && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-20 cursor-pointer group">
+              <div className="bg-white/10 p-4 rounded-full backdrop-blur-md group-hover:scale-110 transition-transform">
+                <Camera className="h-8 w-8 text-white" />
+              </div>
+              <p className="absolute bottom-10 text-white font-bold text-xs tracking-widest">CHANGE HERO IMAGE</p>
+            </div>
+          )}
         </div>
         
         <div className="container relative z-10 text-white">
           <div className="max-w-2xl space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
-              PRECISION IN <br />
-              <span className="text-secondary">RESEARCH.</span>
-            </h1>
-            <p className="text-lg md:text-xl text-white/80 max-w-lg">
-              Helivex Labs provides the scientific community with ultra-pure peptides and research compounds, setting the gold standard for integrity and reliability.
-            </p>
+            <EditableText 
+              tagName="h1"
+              content="PRECISION IN RESEARCH."
+              className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight"
+            />
+            <EditableText 
+              tagName="p"
+              content="Helivex Labs provides the scientific community with ultra-pure peptides and research compounds, setting the gold standard for integrity and reliability."
+              className="text-lg md:text-xl text-white/80 max-w-lg"
+            />
             <div className="flex flex-wrap gap-4 pt-4">
               <Link href="/shop" className="btn-secondary flex items-center gap-2 group">
                 SHOP PRODUCTS <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
