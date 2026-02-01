@@ -9,6 +9,7 @@ import EditableText from '@/components/EditableText';
 import { useAdmin } from '@/context/AdminContext';
 import { LabIcons, MoleculePattern } from '@/components/LabArt';
 import MedicalCore from '@/components/MedicalCore';
+import MissionSection from '@/components/MissionSection';
 
 export default function Home() {
   const { isEditMode } = useAdmin();
@@ -63,6 +64,8 @@ export default function Home() {
           <ChevronDown className="h-6 w-6 text-black/20" />
         </div>
       </section>
+
+      <MissionSection />
 
       {/* Trust Badges */}
       <section className="py-12 border-b border-border bg-muted/50">
