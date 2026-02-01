@@ -286,9 +286,9 @@ export default function MissionSection() {
                   animate={{ 
                     scale: [1, 1.3, 1],
                     boxShadow: [
-                      "0 0 0 0px rgba(212, 136, 6, 0.4)",
-                      "0 0 0 10px rgba(212, 136, 6, 0)",
-                      "0 0 0 0px rgba(212, 136, 6, 0)"
+                      "0 0 0 0px rgba(236, 72, 153, 0.4)",
+                      "0 0 0 10px rgba(236, 72, 153, 0)",
+                      "0 0 0 0px rgba(236, 72, 153, 0)"
                     ]
                   }}
                   transition={{ 
@@ -296,7 +296,7 @@ export default function MissionSection() {
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="w-4 h-4 rounded-full bg-[#D48806] border-2 border-white shadow-lg"
+                  className="w-4 h-4 rounded-full bg-[#EC4899] border-2 border-white shadow-lg"
                 />
               </div>
 
