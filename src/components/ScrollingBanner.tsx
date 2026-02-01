@@ -35,7 +35,19 @@ const DNAHelixIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export default function ScrollingBanner() {
+interface ScrollingBannerProps {
+  backgroundColor?: string;
+  textColor?: string;
+  speed?: number;
+  reverse?: boolean;
+}
+
+export default function ScrollingBanner({
+  backgroundColor = "bg-primary",
+  textColor = "text-white/40",
+  speed = 30,
+  reverse = false,
+}: ScrollingBannerProps) {
   // Array of icons to display
   const icons = [
     <MoleculeIcon key="m1" className="h-12 w-auto" />,
@@ -50,23 +62,23 @@ export default function ScrollingBanner() {
   const doubledIcons = [...icons, ...icons, ...icons];
 
   return (
-    <div className="bg-primary overflow-hidden py-6 border-y border-white/10 select-none">
+    <div className={`${backgroundColor} overflow-hidden py-6 border-y border-white/10 select-none`}>
       <motion.div
         className="flex whitespace-nowrap gap-24 items-center"
         animate={{
-          x: [0, -1000],
+          x: reverse ? [-1000, 0] : [0, -1000],
         }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 30,
+            duration: speed,
             ease: "linear",
           },
         }}
       >
         {doubledIcons.map((icon, index) => (
-          <div key={index} className="flex items-center gap-24 text-white/40 hover:text-white/80 transition-colors duration-500">
+          <div key={index} className={`flex items-center gap-24 ${textColor} hover:text-white/80 transition-colors duration-500`}>
             {icon}
           </div>
         ))}

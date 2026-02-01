@@ -29,11 +29,10 @@ export default function Home() {
         
         <div className="container relative z-10 text-white">
           <div className="max-w-2xl space-y-6">
-            <EditableText 
-              tagName="h1"
-              content="PRECISION IN RESEARCH."
-              className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight"
-            />
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
+              PRECISION IN <br />
+              <span className="text-secondary italic">RESEARCH.</span>
+            </h1>
             <EditableText 
               tagName="p"
               content="Helivex Labs provides the scientific community with ultra-pure peptides and research compounds, setting the gold standard for integrity and reliability."
@@ -178,8 +177,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Scrolling Banner */}
-      <ScrollingBanner />
+      {/* Scrolling Banners */}
+      <div className="flex flex-col">
+        <ScrollingBanner backgroundColor="bg-primary" textColor="text-white/40" />
+        <ScrollingBanner backgroundColor="bg-secondary" textColor="text-primary/40" reverse={true} />
+      </div>
     </div>
   );
 }
