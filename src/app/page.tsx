@@ -21,9 +21,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent z-10" />
           
-          {/* Subtle Grid and Molecule Patterns */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[size:60px_60px] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)]" />
-          
+          {/* Subtle Molecule Patterns */}
           <div className="absolute top-20 right-[10%] w-64 h-64 text-white opacity-[0.05] animate-pulse">
             <LabIcons.Structure />
           </div>

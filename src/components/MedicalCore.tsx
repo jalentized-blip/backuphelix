@@ -38,14 +38,6 @@ export default function MedicalCore() {
       {/* Background Tech Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(158,27,27,0.05),transparent)]" />
-        <div className="absolute inset-0 opacity-[0.03] bg-[size:40px_40px] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)]" />
-        
-        {/* Animated Grid Lines */}
-        <motion.div 
-          animate={{ y: [0, 40] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 opacity-[0.05] bg-[size:40px_40px] bg-[linear-gradient(to_bottom,#fff_1px,transparent_1px)]"
-        />
       </div>
 
       <div className="container relative z-10 mx-auto">
