@@ -169,17 +169,39 @@ export default function MissionSection() {
                 y: positions[i].y,
                 opacity: 1
               }}
-              className={`absolute ${callout.position} z-20 hidden md:block w-64 ${isEditMode ? 'cursor-move' : ''}`}
+              className={`absolute ${callout.position} z-20 hidden md:block w-64 group ${isEditMode ? 'cursor-move' : ''}`}
             >
-              <div className={`bg-white border ${isEditMode ? 'border-primary' : 'border-black/[0.03]'} p-6 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative group hover:shadow-xl transition-all duration-500`}>
+              {/* The Hover Target Area (The Dot) */}
+              <div className={`absolute ${callout.dotPosition} z-30 cursor-pointer`}>
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    boxShadow: [
+                      "0 0 0 0px rgba(212, 136, 6, 0.4)",
+                      "0 0 0 10px rgba(212, 136, 6, 0)",
+                      "0 0 0 0px rgba(212, 136, 6, 0)"
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="w-4 h-4 rounded-full bg-[#D48806] border-2 border-white shadow-lg"
+                />
+              </div>
+
+              {/* The Revealable Content */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9, x: callout.dotPosition.includes('right') ? 10 : -10 }}
+                whileHover={{ opacity: 1, scale: 1, x: 0 }}
+                animate={isEditMode ? { opacity: 1, scale: 1, x: 0 } : {}}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className={`bg-white border ${isEditMode ? 'border-primary' : 'border-black/[0.03]'} p-6 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] relative group-hover:z-40 pointer-events-none group-hover:pointer-events-auto`}
+              >
                 <h4 className="text-sm font-black text-zinc-900 mb-2 uppercase tracking-tight">{callout.title}</h4>
                 <p className="text-xs text-zinc-500 leading-relaxed font-medium">{callout.description}</p>
-                
-                {/* Connecting Dot & Line */}
-                <div className={`absolute ${callout.dotPosition} flex items-center`}>
-                  <div className="w-3 h-3 rounded-full bg-[#D48806] border-2 border-white shadow-sm" />
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
 
