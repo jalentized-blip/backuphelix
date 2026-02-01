@@ -83,18 +83,18 @@ export default function MedicalCore() {
               <Link href="/coa" className="relative z-10 block group">
                 <motion.div 
                   whileHover={{ 
-                    scale: 1.8,
-                    rotate: [0, -10, 10, -10, 10, 0],
-                    x: [0, -5, 5, -5, 5, 0],
-                    y: [0, 5, -5, 5, -5, 0],
-                    filter: ['brightness(1) contrast(1)', 'brightness(1.5) contrast(1.2)', 'brightness(1) contrast(1)']
+                    scale: 1.15,
+                    rotate: [0, -2, 2, -2, 2, 0],
+                    x: [0, -1, 1, -1, 1, 0],
+                    y: [0, 1, -1, 1, -1, 0],
+                    filter: ['brightness(1) contrast(1)', 'brightness(1.1) contrast(1.05)', 'brightness(1) contrast(1)']
                   }}
                   transition={{ 
-                    rotate: { duration: 0.1, repeat: Infinity },
-                    x: { duration: 0.1, repeat: Infinity },
-                    y: { duration: 0.1, repeat: Infinity },
-                    scale: { type: "spring", stiffness: 300, damping: 10 },
-                    filter: { duration: 0.5, repeat: Infinity }
+                    rotate: { duration: 0.4, repeat: Infinity },
+                    x: { duration: 0.4, repeat: Infinity },
+                    y: { duration: 0.4, repeat: Infinity },
+                    scale: { type: "spring", stiffness: 400, damping: 25 },
+                    filter: { duration: 1, repeat: Infinity }
                   }}
                   className="text-primary w-40 h-40 cursor-pointer"
                 >
