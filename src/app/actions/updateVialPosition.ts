@@ -4,8 +4,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import { revalidatePath } from 'next/cache';
 import { updateFileOnGitHub } from '@/lib/githubSync';
+import { ActionResponse } from '@/lib/types';
 
-export async function updateVialPosition(vialData: { x: number, y: number, rotate: number, scale: number }) {
+export async function updateVialPosition(vialData: { x: number, y: number, rotate: number, scale: number }): Promise<ActionResponse> {
   try {
     const relativePath = 'src/components/MedicalCore.tsx';
     const filePath = path.join(process.cwd(), relativePath);

@@ -5,8 +5,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import { revalidatePath } from 'next/cache';
 import { updateFileOnGitHub } from '@/lib/githubSync';
+import { ActionResponse } from '@/lib/types';
 
-export async function updateHeroText(newText: string) {
+export async function updateHeroText(newText: string): Promise<ActionResponse> {
   try {
     const relativePath = 'src/app/page.tsx';
     const filePath = path.join(process.cwd(), relativePath);

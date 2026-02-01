@@ -4,11 +4,12 @@ import fs from 'fs/promises';
 import path from 'path';
 import { revalidatePath } from 'next/cache';
 import { updateFileOnGitHub } from '@/lib/githubSync';
+import { ActionResponse } from '@/lib/types';
 
 export async function updateMissionPositions(
   positions: { x: number, y: number }[],
   vialData?: { x: number, y: number, rotate: number, scale: number }
-) {
+): Promise<ActionResponse> {
   try {
     const relativePath = 'src/components/MissionSection.tsx';
     const filePath = path.join(process.cwd(), relativePath);
