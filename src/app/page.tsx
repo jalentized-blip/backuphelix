@@ -216,10 +216,10 @@ export default function Home() {
       <section 
         className="py-32 md:py-48 bg-primary text-primary-foreground relative overflow-visible"
         style={{ 
-           clipPath: 'polygon(0 0, 100% 15%, 100% 100%, 0 85%)',
-           marginTop: '-8rem',
-           marginBottom: '-8rem'
-         }}
+            clipPath: 'polygon(0 15%, 100% 0, 100% 85%, 0 100%)',
+            marginTop: '-8rem',
+            marginBottom: '-8rem'
+          }}
       >
         <div className="absolute inset-0 opacity-[0.05] pointer-events-none overflow-hidden">
           <div className="absolute -right-20 -top-20 w-[600px] h-[600px] rotate-12">
