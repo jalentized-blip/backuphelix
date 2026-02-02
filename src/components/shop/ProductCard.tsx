@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Eye } from 'lucide-react';
 import { Product } from '@/data/products';
+import { LabIcons } from '@/components/LabArt';
 
 interface ProductCardProps {
   product: Product;
@@ -14,12 +15,27 @@ export default function ProductCard({ product }: ProductCardProps) {
     <div className="group flex flex-col bg-white rounded-2xl border border-border overflow-hidden transition-all hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20">
       {/* Image Section */}
       <Link href={`/product/${product.id}`} className="aspect-[4/5] relative bg-zinc-50 overflow-hidden flex items-center justify-center p-8">
-        {product.isNew && (
-          <span className="absolute top-4 left-4 z-10 bg-secondary text-secondary-foreground text-[10px] font-bold px-2.5 py-1 rounded-full">NEW</span>
-        )}
-        {product.isBestSeller && (
-          <span className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground text-[10px] font-bold px-2.5 py-1 rounded-full">BEST SELLER</span>
-        )}
+        {/* Subtle Lab Background Pattern for Cards */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none group-hover:opacity-[0.06] transition-opacity duration-500">
+          <div className="absolute top-4 right-4 w-16 h-16 rotate-12"><LabIcons.Structure /></div>
+          <div className="absolute bottom-6 left-6 w-14 h-14 -rotate-12"><LabIcons.Vial /></div>
+        </div>
+
+        {/* Status Badges */}
+        <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
+          {product.isNew && (
+            <span className="bg-secondary/90 backdrop-blur-sm text-secondary-foreground text-[9px] font-black tracking-widest px-2.5 py-1 rounded-full border border-primary/10">NEW_BATCH</span>
+          )}
+          {product.isBestSeller && (
+            <span className="bg-primary/90 backdrop-blur-sm text-primary-foreground text-[9px] font-black tracking-widest px-2.5 py-1 rounded-full border border-white/10">TOP_RESEARCH</span>
+          )}
+        </div>
+
+        {/* Corner Accent */}
+        <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[1px] h-8 bg-primary/20" />
+          <div className="absolute top-0 right-0 w-8 h-[1px] bg-primary/20" />
+        </div>
         
         <div className="relative w-full h-full group-hover:scale-110 transition-all duration-700">
           <Image 

@@ -11,6 +11,7 @@ import { LabIcons, MoleculePattern } from '@/components/LabArt';
 import MedicalCore from '@/components/MedicalCore';
 import MissionSection from '@/components/MissionSection';
 import { updateHeroText } from '@/app/actions/updateHeroText';
+import ProductCard from '@/components/shop/ProductCard';
 
 export default function Home() {
   const { isEditMode } = useAdmin();
@@ -154,59 +155,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {products.map((product) => (
-              <Link key={product.id} href={`/product/${product.id}`} className="group space-y-5">
-                <div className="aspect-[4/5] relative bg-white rounded-2xl overflow-hidden border border-border transition-all duration-500 group-hover:border-primary/30 group-hover:shadow-[0_20px_40px_-15px_rgba(158,27,27,0.1)]">
-                  {/* Subtle Lab Background Pattern for Cards */}
-                  <div className="absolute inset-0 opacity-[0.03] pointer-events-none group-hover:opacity-[0.06] transition-opacity duration-500">
-                    <div className="absolute top-4 right-4 w-16 h-16 rotate-12"><LabIcons.Structure /></div>
-                    <div className="absolute bottom-6 left-6 w-14 h-14 -rotate-12"><LabIcons.Vial /></div>
-                  </div>
-                  
-                  {/* Status Badges */}
-                  <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
-                    {product.isNew && (
-                      <span className="bg-secondary/90 backdrop-blur-sm text-secondary-foreground text-[9px] font-black tracking-widest px-2.5 py-1 rounded-full border border-primary/10">NEW_BATCH</span>
-                    )}
-                    {product.isBestSeller && (
-                      <span className="bg-primary/90 backdrop-blur-sm text-primary-foreground text-[9px] font-black tracking-widest px-2.5 py-1 rounded-full border border-white/10">TOP_RESEARCH</span>
-                    )}
-                  </div>
-
-                  {/* Corner Accent */}
-                  <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none">
-                    <div className="absolute top-0 right-0 w-[1px] h-8 bg-primary/20" />
-                    <div className="absolute top-0 right-0 w-8 h-[1px] bg-primary/20" />
-                  </div>
-                  
-                  <div className="absolute inset-0 flex items-center justify-center p-12 group-hover:scale-110 transition-all duration-700">
-                     <div className="relative w-full h-full">
-                       <Image 
-                         src={product.image} 
-                         alt={product.name}
-                         fill
-                         className="object-contain drop-shadow-2xl"
-                       />
-                     </div>
-                  </div>
-
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-x-0 bottom-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-transparent">
-                    <div className="flex items-center justify-between text-white">
-                      <span className="text-[10px] font-bold tracking-widest uppercase">Analyze Specs</span>
-                      <ArrowRight size={14} />
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-1 px-1">
-                  <h3 className="font-bold text-lg group-hover:text-primary transition-colors duration-300">{product.name}</h3>
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm font-mono text-muted-foreground">{product.priceRange}</p>
-                    <div className="flex gap-0.5">
-                      {[1, 2, 3].map(i => <div key={i} className="w-1 h-1 bg-primary/20 rounded-full" />)}
-                    </div>
-                  </div>
-                </div>
-              </Link>
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
