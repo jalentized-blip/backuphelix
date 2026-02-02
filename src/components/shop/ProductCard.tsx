@@ -63,7 +63,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <Link 
           href={`/product/${product.id}`}
-          className="w-full bg-primary text-white text-[11px] font-black tracking-[0.2em] py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group/btn relative overflow-hidden transition-all hover:bg-accent active:scale-[0.98] border border-white/10"
+          className="w-full bg-primary text-white text-[11px] font-black tracking-[0.3em] py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group/btn relative overflow-hidden transition-all hover:bg-accent active:scale-[0.98] border border-white/20"
         >
           <FlaskConical className="h-3.5 w-3.5 relative z-10" />
           <span className="relative z-10 uppercase">ADD TO RESEARCH</span>
