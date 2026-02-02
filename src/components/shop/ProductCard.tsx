@@ -57,13 +57,13 @@ export default function ProductCard({ product }: ProductCardProps) {
             <h3 className="font-bold text-lg group-hover:text-primary transition-colors">{product.name}</h3>
           </Link>
           <div className="flex items-center justify-between">
-            <p className="text-primary font-black text-sm tracking-tight">{product.priceRange}</p>
+            <p className="text-primary font-black text-lg tracking-tight">{product.priceRange}</p>
           </div>
         </div>
 
         <Link 
           href={`/product/${product.id}`}
-          className="w-full bg-primary text-white text-[10px] font-black tracking-[0.2em] py-3.5 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group/btn relative overflow-hidden transition-all hover:bg-accent active:scale-[0.98] border border-white/10"
+          className="w-full bg-primary text-white text-[11px] font-black tracking-[0.2em] py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group/btn relative overflow-hidden transition-all hover:bg-accent active:scale-[0.98] border border-white/10"
         >
           <FlaskConical className="h-3.5 w-3.5 relative z-10" />
           <span className="relative z-10 uppercase">ADD TO RESEARCH</span>
