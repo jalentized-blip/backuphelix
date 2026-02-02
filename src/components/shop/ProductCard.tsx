@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Eye } from 'lucide-react';
+import { FlaskConical } from 'lucide-react';
 import { Product } from '@/data/products';
 import { LabIcons } from '@/components/LabArt';
 
@@ -57,7 +57,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             <h3 className="font-bold text-lg group-hover:text-primary transition-colors">{product.name}</h3>
           </Link>
           <div className="flex items-center justify-between">
-            <p className="text-[10px] text-muted-foreground uppercase tracking-[0.2em] font-medium">{product.category}</p>
             <p className="text-primary font-black text-sm tracking-tight">{product.priceRange}</p>
           </div>
         </div>
@@ -66,8 +65,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           href={`/product/${product.id}`}
           className="w-full bg-primary text-white text-[10px] font-black tracking-[0.2em] py-3.5 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group/btn relative overflow-hidden transition-all hover:bg-accent active:scale-[0.98]"
         >
-          <Eye className="h-3.5 w-3.5 relative z-10" />
-          <span className="relative z-10 uppercase">VIEW</span>
+          <FlaskConical className="h-3.5 w-3.5 relative z-10" />
+          <span className="relative z-10 uppercase">ADD TO RESEARCH</span>
           <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
         </Link>
       </div>
