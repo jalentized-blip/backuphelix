@@ -57,7 +57,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <h3 className="font-bold text-lg group-hover:text-primary transition-colors">{product.name}</h3>
           </Link>
           <div className="flex items-center justify-between">
-            <p className="text-primary font-black text-lg tracking-tight">{product.priceRange}</p>
+            <p className="text-primary font-black text-xl tracking-tight">${product.price.toFixed(2)}</p>
           </div>
         </div>
 
