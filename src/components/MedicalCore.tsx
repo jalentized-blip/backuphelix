@@ -274,24 +274,24 @@ export default function MedicalCore() {
 
             {/* Exterior HUD Data Nodes */}
             {[
-              { label: 'NODE_V.104', val: 'PURITY 99.242%', pos: 'top-0 left-0', color: 'text-green-600', shadow: 'shadow-green-100' },
-              { label: 'NODE_V.105', val: 'STERILITY - NO GROWTH', pos: 'top-0 right-0', color: 'text-blue-600', shadow: 'shadow-blue-100' },
-              { label: 'NODE_V.106', val: 'ENDOTOXINS < 0.0239 EU/mg', pos: 'bottom-0 left-0', color: 'text-primary', shadow: 'shadow-red-100' },
-              { label: 'NODE_V.107', val: 'QUANTITY 30.02mg', pos: 'bottom-0 right-0', color: 'text-zinc-800', shadow: 'shadow-zinc-100' },
+              { label: 'NODE_V.104', val: 'PURITY 99.242%', pos: '-top-4 -left-4 md:top-0 md:left-0', color: 'text-green-600', shadow: 'shadow-green-100' },
+              { label: 'NODE_V.105', val: 'STERILITY - NO GROWTH', pos: '-top-4 -right-4 md:top-0 md:right-0', color: 'text-blue-600', shadow: 'shadow-blue-100' },
+              { label: 'NODE_V.106', val: 'ENDOTOXINS < 0.0239 EU/mg', pos: '-bottom-4 -left-4 md:bottom-0 md:left-0', color: 'text-primary', shadow: 'shadow-red-100' },
+              { label: 'NODE_V.107', val: 'QUANTITY 30.02mg', pos: '-bottom-4 -right-4 md:bottom-0 md:right-0', color: 'text-zinc-800', shadow: 'shadow-zinc-100' },
             ].map((node, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className={`absolute p-4 bg-white/95 border border-black/5 rounded-xl backdrop-blur-md z-20 min-w-[140px] shadow-lg ${node.shadow} ${node.pos}`}
+                className={`absolute p-3 md:p-4 bg-white/95 border border-black/5 rounded-xl backdrop-blur-md z-20 min-w-[120px] md:min-w-[140px] shadow-lg ${node.shadow} ${node.pos}`}
               >
-                <div className="space-y-1.5">
+                <div className="space-y-1 md:space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[8px] font-mono text-black/30 tracking-widest">{node.label}</span>
+                    <span className="text-[7px] md:text-[8px] font-mono text-black/30 tracking-widest">{node.label}</span>
                     <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   </div>
-                  <div className={`text-xs font-mono font-black ${node.color}`}>{node.val}</div>
+                  <div className={`text-[10px] md:text-xs font-mono font-black ${node.color}`}>{node.val}</div>
                 </div>
               </motion.div>
             ))}
@@ -313,7 +313,7 @@ export default function MedicalCore() {
                   <div className="h-[1px] w-full bg-gradient-to-r from-primary/30 to-transparent" />
                 </div>
               </motion.div>
-              <h2 className="text-6xl font-black tracking-tighter text-zinc-900 leading-[0.85]">
+              <h2 className="text-4xl sm:text-6xl font-black tracking-tighter text-zinc-900 leading-[0.85]">
                 ADVANCED <br />
                 <span className="text-primary italic">MOLECULAR</span> <br />
                 DIAGNOSTICS

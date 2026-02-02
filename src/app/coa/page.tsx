@@ -102,7 +102,7 @@ export default function COAPage() {
 
   return (
     <div 
-      className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-primary/10 overflow-hidden"
+      className="min-h-screen bg-white text-zinc-900 font-sans selection:bg-primary/10 overflow-x-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Background Glows */}
@@ -332,9 +332,17 @@ export default function COAPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-white/95 backdrop-blur-2xl"
+            className="fixed inset-0 z-50 bg-white/95 backdrop-blur-2xl overflow-y-auto"
           >
-            <div className="container mx-auto px-6 flex flex-col lg:flex-row gap-20 items-center justify-center min-h-screen">
+            {/* Fixed Close Button */}
+            <button 
+              onClick={() => setView('table')}
+              className="fixed top-6 right-6 z-[60] p-4 bg-zinc-900 text-white rounded-full shadow-2xl hover:scale-110 active:scale-90 transition-all"
+            >
+              <X size={24} />
+            </button>
+
+            <div className="container mx-auto px-6 py-12 md:py-24 flex flex-col lg:flex-row gap-10 lg:gap-20 items-center justify-center min-h-screen">
               {/* 3D Visualizer Side */}
               <div className="w-full lg:w-1/2 flex items-center justify-center perspective-[2000px]">
                 <motion.div
