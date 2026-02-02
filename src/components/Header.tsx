@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShoppingCart, Menu, Search, User, Pencil } from 'lucide-react';
 import { useState } from 'react';
 import { useAdmin } from '@/context/AdminContext';
@@ -15,7 +16,16 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full bg-white backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-10">
-          <Link href="/" className="flex items-center space-x-2 group">
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="relative w-8 h-8 flex-shrink-0">
+              <Image 
+                src="/vial.png" 
+                alt="Helivex Labs Logo" 
+                fill 
+                className="object-contain drop-shadow-[0_0_8px_rgba(139,26,26,0.3)] group-hover:scale-110 transition-transform duration-300"
+                priority
+              />
+            </div>
             <div className="relative">
               <span className="text-2xl font-bold tracking-tighter text-primary">HELIVEX <span className="text-secondary-foreground font-light">LABS</span></span>
               <div className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full" />
