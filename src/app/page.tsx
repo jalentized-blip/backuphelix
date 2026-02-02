@@ -25,9 +25,15 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col relative">
+      {/* Global Background Glows */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-[10%] -left-[10%] w-[40%] h-[40%] bg-secondary/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-secondary/5 blur-[150px] rounded-full" />
+      </div>
+
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center overflow-hidden bg-white">
+      <section className="relative h-[80vh] flex items-center overflow-hidden bg-white reflective-glow">
         {/* Animated Lab Background */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* Background Image: freezervials.jpg */}
@@ -130,7 +136,7 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-24 bg-zinc-50/50">
+      <section className="py-24 bg-zinc-50/50 relative reflective-glow">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
             <div className="space-y-2">
@@ -235,7 +241,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-24 bg-white overflow-hidden relative reflective-glow">
         <div className="container relative">
           <div className="max-w-4xl mx-auto space-y-8">
             <h2 className="text-3xl font-bold tracking-tight text-center mb-12 uppercase">FREQUENTLY ASKED QUESTIONS</h2>
